@@ -1,9 +1,10 @@
+import Window from '../components/landingpage/Window';
 import '../styles/fonts.css';
 
 function Landing() {
     return (
         <div className='h-screen w-full flex'>
-            <div className='flex-3 flex flex-col justify-center items-center'>
+            <div className="flex-3 flex flex-col justify-center items-center relative">
                 <div className='flex flex-col gap-y-5 -mt-50'>
                     <div className='kant-700 text-6xl text-white flex flex-col'>
                         <div className=''>Get</div>
@@ -21,9 +22,14 @@ function Landing() {
                             Start Prompting</button>
                     </div>
                 </div>
-                <div>iisj</div>
+
+                <div className='bg-[#00EEFF] absolute left-1/2 -translate-x-1/2 top-[63%] h-[90vh] w-[90vh] rounded-full blur-[120px] pointer-events-none'></div>
+                <Window />
+
             </div>
-            <div className='flex-2 bg-white'>hi</div>
+            <div className='flex-2 bg-white'>
+
+            </div>
         </div>
     )
 }
