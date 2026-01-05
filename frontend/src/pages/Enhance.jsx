@@ -37,7 +37,7 @@ function Enhance() {
         <div className='w-1/2 h-full mx-auto p-10 gap-y-10 flex flex-col items-center justify-between'>
             <Header showCTA={false} />
 
-            <div className='bg-[#B5DCED]/40 w-full h-full rounded-xl p-6 hind-400 text-white text-lg'>
+            <div className='bg-[#B5DCED]/40 w-full h-full rounded-xl p-6 hind-400 text-white text-lg pt-30'>
                 <ViewPrompt prompt={promptGenerated} isLoading={isLoading} errorMessage={errorMessage} />
             </div>
 
