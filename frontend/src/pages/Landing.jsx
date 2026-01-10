@@ -22,7 +22,7 @@ function Landing() {
         }
     }, []);
     return (
-        <div className='min-h-screen w-full flex flex-col relative overflow-hidden pt-20 sm:pt-24 lg:pt-28'>
+        <div className='min-h-screen w-full flex flex-col relative overflow-hidden pt-20 sm:pt-24 lg:pt-43'>
             <Header />
 
             <div className="flex flex-col lg:flex-row h-full w-full items-center justify-evenly gap-y-10 lg:gap-y-0 px-6 lg:px-0">
