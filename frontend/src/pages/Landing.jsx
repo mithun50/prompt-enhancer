@@ -22,15 +22,17 @@ function Landing() {
         }
     }, []);
     return (
-        <div className='h-screen w-full flex'>
-            <div className="flex-3 flex flex-col justify-center items-center relative overflow-hidden">
-                <Header />
-                <div className='flex flex-col gap-y-5 -mt-50'>
+        <div className='h-screen w-full flex flex-col relative overflow-hidden'>
+            <Header />
+
+            <div className="flex flex-row h-full w-full items-center justify-evenly">
+
+                <div className='flex flex-col gap-y-7'>
                     <div className='kant-700 text-6xl text-white flex flex-col'>
                         <div className=''>Get</div>
                         <div><span className='kant-700 text-6xl text-[#344F51] drop-shadow-lg drop-shadow-[#a3ca2e]'>10x</span> Output</div>
                     </div>
-                    <div className='hind-500 text-xl text-white w-xl flex flex-col gap-y-2'>
+                    <div className='hind-500 text-xl text-white max-w-xl flex flex-col gap-y-4'>
                         <div>Write prompts to LLM in the right way to get precise outputs.
                         </div>
                         <div>We handle the prompt engineering, simply describe what you want in plain language, and we transform it into a structured, high-quality prompt.</div>
@@ -45,15 +47,9 @@ function Landing() {
                     </div>
                 </div>
 
-                <div className='bg-[#00EEFF]/60 absolute left-1/2 -translate-x-1/2 top-[60%] h-[100vh] w-[100vh] rounded-full blur-[120px] pointer-events-none'></div>
-                <Window />
-
-            </div>
-
-            <div className='flex-2 bg-white/80 h-full overflow-hidden p-4 flex items-center'>
                 <video
                     ref={videoRef}
-                    className='rounded-xl'
+                    className='rounded-xl w-180 border-3 border-white/80 shadow-2xl/50'
                     autoPlay
                     muted
                     loop
@@ -62,6 +58,15 @@ function Landing() {
                 >
                     <source src='/videos/eleva.mp4' type="video/mp4" />
                 </video>
+
+            </div>
+
+            <div className='absolute left-1/2 -translate-x-1/2 bottom-0 p-4 flex items-center'>
+
+                {/* <div className='bg-[#00EEFF]/60 top-[60%] h-[100vh] w-[100vh] rounded-full blur-[120px] pointer-events-none'></div> */}
+                <div>
+                    <Window />
+                </div>
             </div>
         </div>
     )
