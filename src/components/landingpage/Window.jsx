@@ -3,47 +3,49 @@ import { features } from '../../arrays/features'
 
 function Window() {
   return (
+    <div className="bg-[#3f7992]/85 w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-5xl mx-auto relative border-4 sm:border-6 md:border-8 border-b-0 rounded-2xl sm:rounded-3xl rounded-b-none border-white/40 flex flex-col overflow-hidden gap-y-2 px-2 sm:px-3 pt-2 sm:pt-3 z-10">
 
-    <div className="bg-[#3f7992]/85 left-1/2 -translate-x-1/2 relative bottom-0 h-[32vh] border-8 border-b-0 rounded-2xl rounded-b-none border-[#FFFFFF]/40 flex flex-col overflow-hidden gap-y-2 px-3 pt-3 z-10">
-
-      
-
-      <div className='flex gap-1'>
-        <div className='w-3 h-3 bg-red-500 rounded-full'></div>
-        <div className='w-3 h-3 bg-yellow-500 rounded-full'></div>
-        <div className='w-3 h-3 bg-green-500 rounded-full'></div>
+      {/* Traffic lights */}
+      <div className='flex gap-1 sm:gap-1.5'>
+        <div className='w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-red-500 rounded-full'></div>
+        <div className='w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-yellow-500 rounded-full'></div>
+        <div className='w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-green-500 rounded-full'></div>
       </div>
 
-      <div className='flex gap-7 flex-1 min-h-0 overflow-hidden px-2 pt-1'>
+      <div className='flex gap-2 sm:gap-4 md:gap-5 lg:gap-7 flex-1 min-h-0 overflow-hidden px-1 sm:px-2 pt-1'>
 
-        <div className='grid grid-cols-2 grid-rows-2 gap-5 bg-[#B5DCED]/37 border-2 border-black/40 border-b-0 rounded-lg rounded-b-none p-6 h-full overflow-auto'>
-
+        {/* Features Grid */}
+        <div className='flex-1 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-5 bg-[#B5DCED]/37 border-2 border-black/40 border-b-0 rounded-lg rounded-b-none p-2 sm:p-3 md:p-4 lg:p-6 overflow-auto'>
           {features.map(({ id, icon: Icon, iconProps, title, description }) => (
-            <div key={id} className="flex items-center justify-center gap-x-2 px-5 bg-[#B5DCED]/37 rounded-lg">
-              <div className=''>
-                <Icon {...iconProps} />
+            <div key={id} className="flex items-center gap-x-2 sm:gap-x-3 p-2 sm:p-3 md:p-4 lg:px-5 bg-[#B5DCED]/37 rounded-lg">
+              <div className='shrink-0'>
+                <Icon
+                  {...iconProps}
+                  size={iconProps?.size ? Math.min(iconProps.size, 24) : 20}
+                  className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8"
+                />
               </div>
-              <div>
-                <div className='hind-600 text-xl text-[#344F51]'>{title}</div>
-                <div className='hind-400 text-md text-[#ffffff]'>{description}</div>
+              <div className='min-w-0'>
+                <div className='hind-600 text-sm sm:text-base md:text-lg lg:text-xl text-[#344F51] truncate'>{title}</div>
+                <div className='hind-400 text-xs sm:text-sm md:text-base text-white/90 line-clamp-2'>{description}</div>
               </div>
             </div>
           ))}
-
         </div>
 
-        <div className='flex flex-col items-center justify-between gap-y-2 bg-[#B5DCED]/37 border-2 border-black/40 border-b-0 rounded-lg rounded-b-none p-6 h-full'>
+        {/* Sidebar Icons - Hidden on mobile */}
+        <div className='hidden sm:flex flex-col items-center justify-between gap-y-2 bg-[#B5DCED]/37 border-2 border-black/40 border-b-0 rounded-lg rounded-b-none p-3 sm:p-4 md:p-5 lg:p-6'>
           <div>
-            <User size={35} color='#344F51' />
+            <User className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" color='#344F51' />
           </div>
           <div>
-            <House size={35} color='#344F51' />
+            <House className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" color='#344F51' />
           </div>
           <div>
-            <Newspaper size={35} color='#344F51' />
+            <Newspaper className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" color='#344F51' />
           </div>
           <div>
-            <AppWindow size={35} color='#344F51' />
+            <AppWindow className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" color='#344F51' />
           </div>
         </div>
       </div>

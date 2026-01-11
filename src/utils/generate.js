@@ -1,19 +1,38 @@
 import { GoogleGenAI } from "@google/genai";
-import { OpenRouter } from "@openrouter/sdk";
 
-// const openRouter = new OpenRouter({
-//     apiKey: import.meta.env.VITE_OPENROUTER_API_KEY,
-// });
 const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
-export async function generateEnhancedPrompt(userPrompt) {
+// Build context from chat history
+function buildContextFromHistory(chatHistory = []) {
+    if (!chatHistory || chatHistory.length === 0) return '';
+
+    const contextMessages = chatHistory
+        .filter(msg => msg.enhancedPrompt) // Only include completed messages
+        .slice(-5) // Last 5 messages for context
+        .map(msg => `User asked: "${msg.userPrompt}"\nEnhanced to: "${msg.enhancedPrompt}"`)
+        .join('\n\n');
+
+    if (!contextMessages) return '';
+
+    return `
+    CONVERSATION HISTORY (for context):
+    ${contextMessages}
+
+    Use this context to understand the user's ongoing needs and maintain consistency in your enhancements.
+    `;
+}
+
+export async function generateEnhancedPrompt(userPrompt, chatHistory = []) {
+    const contextSection = buildContextFromHistory(chatHistory);
+
     const modelPrompt = `
     You are an prompt engineer, you take input from the user and enhance their prompt which will in return give better outputs when used.
     User might have input their prompts
     1. in Broken english
     2. have given only minimal context of what the task is.
     3. for generating an image.
-    Irrespective of the challenges you face or incorrect inputs you get, your job is to understand what the user's task is and create a prompt which gives a refined outputs. 
+    Irrespective of the challenges you face or incorrect inputs you get, your job is to understand what the user's task is and create a prompt which gives a refined outputs.
+    ${contextSection}
     Following is the user input "${userPrompt}".
     for example Let's say the user have asked for a birthday gift for a friend.
     You should structure the prompt in the following ways:
